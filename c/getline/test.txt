@@ -1,0 +1,4 @@
+Prva linija a
+Druga linija a b
+Mozda je treca a mozda i nije
+Ovo je vec neka druga

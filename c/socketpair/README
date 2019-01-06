@@ -1,0 +1,2 @@
+Overall result was that on the write side of the socketpair the write() call
+doesn't block, while read() call blocks waiting for the data to arrive.

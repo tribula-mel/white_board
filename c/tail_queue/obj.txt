@@ -1,0 +1,782 @@
+
+tail_queue:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000400488 <_init>:
+  400488:	48 83 ec 08          	sub    $0x8,%rsp
+  40048c:	48 8b 05 65 1b 20 00 	mov    0x201b65(%rip),%rax        # 601ff8 <_DYNAMIC+0x1d0>
+  400493:	48 85 c0             	test   %rax,%rax
+  400496:	74 05                	je     40049d <_init+0x15>
+  400498:	e8 63 00 00 00       	callq  400500 <__gmon_start__@plt>
+  40049d:	48 83 c4 08          	add    $0x8,%rsp
+  4004a1:	c3                   	retq   
+
+Disassembly of section .plt:
+
+00000000004004b0 <free@plt-0x10>:
+  4004b0:	ff 35 52 1b 20 00    	pushq  0x201b52(%rip)        # 602008 <_GLOBAL_OFFSET_TABLE_+0x8>
+  4004b6:	ff 25 54 1b 20 00    	jmpq   *0x201b54(%rip)        # 602010 <_GLOBAL_OFFSET_TABLE_+0x10>
+  4004bc:	0f 1f 40 00          	nopl   0x0(%rax)
+
+00000000004004c0 <free@plt>:
+  4004c0:	ff 25 52 1b 20 00    	jmpq   *0x201b52(%rip)        # 602018 <_GLOBAL_OFFSET_TABLE_+0x18>
+  4004c6:	68 00 00 00 00       	pushq  $0x0
+  4004cb:	e9 e0 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+00000000004004d0 <puts@plt>:
+  4004d0:	ff 25 4a 1b 20 00    	jmpq   *0x201b4a(%rip)        # 602020 <_GLOBAL_OFFSET_TABLE_+0x20>
+  4004d6:	68 01 00 00 00       	pushq  $0x1
+  4004db:	e9 d0 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+00000000004004e0 <printf@plt>:
+  4004e0:	ff 25 42 1b 20 00    	jmpq   *0x201b42(%rip)        # 602028 <_GLOBAL_OFFSET_TABLE_+0x28>
+  4004e6:	68 02 00 00 00       	pushq  $0x2
+  4004eb:	e9 c0 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+00000000004004f0 <__libc_start_main@plt>:
+  4004f0:	ff 25 3a 1b 20 00    	jmpq   *0x201b3a(%rip)        # 602030 <_GLOBAL_OFFSET_TABLE_+0x30>
+  4004f6:	68 03 00 00 00       	pushq  $0x3
+  4004fb:	e9 b0 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+0000000000400500 <__gmon_start__@plt>:
+  400500:	ff 25 32 1b 20 00    	jmpq   *0x201b32(%rip)        # 602038 <_GLOBAL_OFFSET_TABLE_+0x38>
+  400506:	68 04 00 00 00       	pushq  $0x4
+  40050b:	e9 a0 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+0000000000400510 <malloc@plt>:
+  400510:	ff 25 2a 1b 20 00    	jmpq   *0x201b2a(%rip)        # 602040 <_GLOBAL_OFFSET_TABLE_+0x40>
+  400516:	68 05 00 00 00       	pushq  $0x5
+  40051b:	e9 90 ff ff ff       	jmpq   4004b0 <_init+0x28>
+
+Disassembly of section .text:
+
+0000000000400520 <_start>:
+  400520:	31 ed                	xor    %ebp,%ebp
+  400522:	49 89 d1             	mov    %rdx,%r9
+  400525:	5e                   	pop    %rsi
+  400526:	48 89 e2             	mov    %rsp,%rdx
+  400529:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+  40052d:	50                   	push   %rax
+  40052e:	54                   	push   %rsp
+  40052f:	49 c7 c0 c0 0c 40 00 	mov    $0x400cc0,%r8
+  400536:	48 c7 c1 50 0c 40 00 	mov    $0x400c50,%rcx
+  40053d:	48 c7 c7 39 08 40 00 	mov    $0x400839,%rdi
+  400544:	e8 a7 ff ff ff       	callq  4004f0 <__libc_start_main@plt>
+  400549:	f4                   	hlt    
+  40054a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000400550 <deregister_tm_clones>:
+  400550:	b8 5f 20 60 00       	mov    $0x60205f,%eax
+  400555:	55                   	push   %rbp
+  400556:	48 2d 58 20 60 00    	sub    $0x602058,%rax
+  40055c:	48 83 f8 0e          	cmp    $0xe,%rax
+  400560:	48 89 e5             	mov    %rsp,%rbp
+  400563:	76 1b                	jbe    400580 <deregister_tm_clones+0x30>
+  400565:	b8 00 00 00 00       	mov    $0x0,%eax
+  40056a:	48 85 c0             	test   %rax,%rax
+  40056d:	74 11                	je     400580 <deregister_tm_clones+0x30>
+  40056f:	5d                   	pop    %rbp
+  400570:	bf 58 20 60 00       	mov    $0x602058,%edi
+  400575:	ff e0                	jmpq   *%rax
+  400577:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  40057e:	00 00 
+  400580:	5d                   	pop    %rbp
+  400581:	c3                   	retq   
+  400582:	0f 1f 40 00          	nopl   0x0(%rax)
+  400586:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  40058d:	00 00 00 
+
+0000000000400590 <register_tm_clones>:
+  400590:	be 58 20 60 00       	mov    $0x602058,%esi
+  400595:	55                   	push   %rbp
+  400596:	48 81 ee 58 20 60 00 	sub    $0x602058,%rsi
+  40059d:	48 c1 fe 03          	sar    $0x3,%rsi
+  4005a1:	48 89 e5             	mov    %rsp,%rbp
+  4005a4:	48 89 f0             	mov    %rsi,%rax
+  4005a7:	48 c1 e8 3f          	shr    $0x3f,%rax
+  4005ab:	48 01 c6             	add    %rax,%rsi
+  4005ae:	48 d1 fe             	sar    %rsi
+  4005b1:	74 15                	je     4005c8 <register_tm_clones+0x38>
+  4005b3:	b8 00 00 00 00       	mov    $0x0,%eax
+  4005b8:	48 85 c0             	test   %rax,%rax
+  4005bb:	74 0b                	je     4005c8 <register_tm_clones+0x38>
+  4005bd:	5d                   	pop    %rbp
+  4005be:	bf 58 20 60 00       	mov    $0x602058,%edi
+  4005c3:	ff e0                	jmpq   *%rax
+  4005c5:	0f 1f 00             	nopl   (%rax)
+  4005c8:	5d                   	pop    %rbp
+  4005c9:	c3                   	retq   
+  4005ca:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000004005d0 <__do_global_dtors_aux>:
+  4005d0:	80 3d 89 1a 20 00 00 	cmpb   $0x0,0x201a89(%rip)        # 602060 <completed.7568>
+  4005d7:	75 11                	jne    4005ea <__do_global_dtors_aux+0x1a>
+  4005d9:	55                   	push   %rbp
+  4005da:	48 89 e5             	mov    %rsp,%rbp
+  4005dd:	e8 6e ff ff ff       	callq  400550 <deregister_tm_clones>
+  4005e2:	5d                   	pop    %rbp
+  4005e3:	c6 05 76 1a 20 00 01 	movb   $0x1,0x201a76(%rip)        # 602060 <completed.7568>
+  4005ea:	f3 c3                	repz retq 
+  4005ec:	0f 1f 40 00          	nopl   0x0(%rax)
+
+00000000004005f0 <frame_dummy>:
+  4005f0:	bf 20 1e 60 00       	mov    $0x601e20,%edi
+  4005f5:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+  4005f9:	75 05                	jne    400600 <frame_dummy+0x10>
+  4005fb:	eb 93                	jmp    400590 <register_tm_clones>
+  4005fd:	0f 1f 00             	nopl   (%rax)
+  400600:	b8 00 00 00 00       	mov    $0x0,%eax
+  400605:	48 85 c0             	test   %rax,%rax
+  400608:	74 f1                	je     4005fb <frame_dummy+0xb>
+  40060a:	55                   	push   %rbp
+  40060b:	48 89 e5             	mov    %rsp,%rbp
+  40060e:	ff d0                	callq  *%rax
+  400610:	5d                   	pop    %rbp
+  400611:	e9 7a ff ff ff       	jmpq   400590 <register_tm_clones>
+
+0000000000400616 <clear_queue>:
+   void *data;
+
+   TAILQ_ENTRY(entry) entries; /* Tail queue. */
+} entry_t;
+
+static void clear_queue(void) {
+  400616:	55                   	push   %rbp
+  400617:	48 89 e5             	mov    %rsp,%rbp
+  40061a:	48 83 ec 10          	sub    $0x10,%rsp
+   entry_t *item;
+   int count = 0;
+  40061e:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+
+   while (!TAILQ_EMPTY(&head)) {
+  400625:	eb 7c                	jmp    4006a3 <clear_queue+0x8d>
+       printf("remove count[%d]\n", ++count);
+  400627:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+  40062b:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  40062e:	89 c6                	mov    %eax,%esi
+  400630:	bf d8 0c 40 00       	mov    $0x400cd8,%edi
+  400635:	b8 00 00 00 00       	mov    $0x0,%eax
+  40063a:	e8 a1 fe ff ff       	callq  4004e0 <printf@plt>
+       item = TAILQ_FIRST(&head);
+  40063f:	48 8b 05 3a 1a 20 00 	mov    0x201a3a(%rip),%rax        # 602080 <head>
+  400646:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+       item = NULL;
+  40064a:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+  400651:	00 
+       TAILQ_REMOVE(&head, item, entries);
+  400652:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400656:	48 8b 40 08          	mov    0x8(%rax),%rax
+  40065a:	48 85 c0             	test   %rax,%rax
+  40065d:	74 16                	je     400675 <clear_queue+0x5f>
+  40065f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400663:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400667:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  40066b:	48 8b 52 10          	mov    0x10(%rdx),%rdx
+  40066f:	48 89 50 10          	mov    %rdx,0x10(%rax)
+  400673:	eb 0f                	jmp    400684 <clear_queue+0x6e>
+  400675:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400679:	48 8b 40 10          	mov    0x10(%rax),%rax
+  40067d:	48 89 05 04 1a 20 00 	mov    %rax,0x201a04(%rip)        # 602088 <head+0x8>
+  400684:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400688:	48 8b 40 10          	mov    0x10(%rax),%rax
+  40068c:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  400690:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+  400694:	48 89 10             	mov    %rdx,(%rax)
+       free(item);
+  400697:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  40069b:	48 89 c7             	mov    %rax,%rdi
+  40069e:	e8 1d fe ff ff       	callq  4004c0 <free@plt>
+
+static void clear_queue(void) {
+   entry_t *item;
+   int count = 0;
+
+   while (!TAILQ_EMPTY(&head)) {
+  4006a3:	48 8b 05 d6 19 20 00 	mov    0x2019d6(%rip),%rax        # 602080 <head>
+  4006aa:	48 85 c0             	test   %rax,%rax
+  4006ad:	0f 85 74 ff ff ff    	jne    400627 <clear_queue+0x11>
+       item = TAILQ_FIRST(&head);
+       item = NULL;
+       TAILQ_REMOVE(&head, item, entries);
+       free(item);
+   }
+}
+  4006b3:	90                   	nop
+  4006b4:	c9                   	leaveq 
+  4006b5:	c3                   	retq   
+
+00000000004006b6 <insert_q>:
+
+static int insert_q(entry_t *item) {
+  4006b6:	55                   	push   %rbp
+  4006b7:	48 89 e5             	mov    %rsp,%rbp
+  4006ba:	48 83 ec 10          	sub    $0x10,%rsp
+  4006be:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   if (item == NULL) {
+  4006c2:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+  4006c7:	75 14                	jne    4006dd <insert_q+0x27>
+      printf("passed NULL\n");
+  4006c9:	bf ea 0c 40 00       	mov    $0x400cea,%edi
+  4006ce:	e8 fd fd ff ff       	callq  4004d0 <puts@plt>
+      return -1;
+  4006d3:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  4006d8:	e9 b4 00 00 00       	jmpq   400791 <insert_q+0xdb>
+   }
+
+   if (count == MAX_SIZE) {
+  4006dd:	0f b7 05 84 19 20 00 	movzwl 0x201984(%rip),%eax        # 602068 <count>
+  4006e4:	66 83 f8 02          	cmp    $0x2,%ax
+  4006e8:	75 59                	jne    400743 <insert_q+0x8d>
+      /* first remove the item at head */
+      TAILQ_REMOVE(&head, TAILQ_FIRST(&head), entries);
+  4006ea:	48 8b 05 8f 19 20 00 	mov    0x20198f(%rip),%rax        # 602080 <head>
+  4006f1:	48 8b 40 08          	mov    0x8(%rax),%rax
+  4006f5:	48 85 c0             	test   %rax,%rax
+  4006f8:	74 1c                	je     400716 <insert_q+0x60>
+  4006fa:	48 8b 05 7f 19 20 00 	mov    0x20197f(%rip),%rax        # 602080 <head>
+  400701:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400705:	48 8b 15 74 19 20 00 	mov    0x201974(%rip),%rdx        # 602080 <head>
+  40070c:	48 8b 52 10          	mov    0x10(%rdx),%rdx
+  400710:	48 89 50 10          	mov    %rdx,0x10(%rax)
+  400714:	eb 12                	jmp    400728 <insert_q+0x72>
+  400716:	48 8b 05 63 19 20 00 	mov    0x201963(%rip),%rax        # 602080 <head>
+  40071d:	48 8b 40 10          	mov    0x10(%rax),%rax
+  400721:	48 89 05 60 19 20 00 	mov    %rax,0x201960(%rip)        # 602088 <head+0x8>
+  400728:	48 8b 05 51 19 20 00 	mov    0x201951(%rip),%rax        # 602080 <head>
+  40072f:	48 8b 40 10          	mov    0x10(%rax),%rax
+  400733:	48 8b 15 46 19 20 00 	mov    0x201946(%rip),%rdx        # 602080 <head>
+  40073a:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+  40073e:	48 89 10             	mov    %rdx,(%rax)
+  400741:	eb 11                	jmp    400754 <insert_q+0x9e>
+   } else {
+      count++;
+  400743:	0f b7 05 1e 19 20 00 	movzwl 0x20191e(%rip),%eax        # 602068 <count>
+  40074a:	83 c0 01             	add    $0x1,%eax
+  40074d:	66 89 05 14 19 20 00 	mov    %ax,0x201914(%rip)        # 602068 <count>
+   }
+
+   /* add to the tail of the queue */
+   TAILQ_INSERT_TAIL(&head, item, entries);
+  400754:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400758:	48 c7 40 08 00 00 00 	movq   $0x0,0x8(%rax)
+  40075f:	00 
+  400760:	48 8b 15 21 19 20 00 	mov    0x201921(%rip),%rdx        # 602088 <head+0x8>
+  400767:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  40076b:	48 89 50 10          	mov    %rdx,0x10(%rax)
+  40076f:	48 8b 05 12 19 20 00 	mov    0x201912(%rip),%rax        # 602088 <head+0x8>
+  400776:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  40077a:	48 89 10             	mov    %rdx,(%rax)
+  40077d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400781:	48 83 c0 08          	add    $0x8,%rax
+  400785:	48 89 05 fc 18 20 00 	mov    %rax,0x2018fc(%rip)        # 602088 <head+0x8>
+
+   return 0;
+  40078c:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  400791:	c9                   	leaveq 
+  400792:	c3                   	retq   
+
+0000000000400793 <get_q>:
+
+static entry_t *get_q(void) {
+  400793:	55                   	push   %rbp
+  400794:	48 89 e5             	mov    %rsp,%rbp
+   entry_t *item;
+
+   if (count == 0) {
+  400797:	0f b7 05 ca 18 20 00 	movzwl 0x2018ca(%rip),%eax        # 602068 <count>
+  40079e:	66 85 c0             	test   %ax,%ax
+  4007a1:	75 0a                	jne    4007ad <get_q+0x1a>
+      /* queue is empty */
+      return NULL;
+  4007a3:	b8 00 00 00 00       	mov    $0x0,%eax
+  4007a8:	e9 8a 00 00 00       	jmpq   400837 <get_q+0xa4>
+   }
+
+   if (TAILQ_FIRST(&head) != NULL) {
+  4007ad:	48 8b 05 cc 18 20 00 	mov    0x2018cc(%rip),%rax        # 602080 <head>
+  4007b4:	48 85 c0             	test   %rax,%rax
+  4007b7:	74 79                	je     400832 <get_q+0x9f>
+      count--;
+  4007b9:	0f b7 05 a8 18 20 00 	movzwl 0x2018a8(%rip),%eax        # 602068 <count>
+  4007c0:	83 e8 01             	sub    $0x1,%eax
+  4007c3:	66 89 05 9e 18 20 00 	mov    %ax,0x20189e(%rip)        # 602068 <count>
+
+      /* return the element at the head */
+      item = TAILQ_FIRST(&head);
+  4007ca:	48 8b 05 af 18 20 00 	mov    0x2018af(%rip),%rax        # 602080 <head>
+  4007d1:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+      /* we can remove it now */
+      TAILQ_REMOVE(&head, TAILQ_FIRST(&head), entries);
+  4007d5:	48 8b 05 a4 18 20 00 	mov    0x2018a4(%rip),%rax        # 602080 <head>
+  4007dc:	48 8b 40 08          	mov    0x8(%rax),%rax
+  4007e0:	48 85 c0             	test   %rax,%rax
+  4007e3:	74 1c                	je     400801 <get_q+0x6e>
+  4007e5:	48 8b 05 94 18 20 00 	mov    0x201894(%rip),%rax        # 602080 <head>
+  4007ec:	48 8b 40 08          	mov    0x8(%rax),%rax
+  4007f0:	48 8b 15 89 18 20 00 	mov    0x201889(%rip),%rdx        # 602080 <head>
+  4007f7:	48 8b 52 10          	mov    0x10(%rdx),%rdx
+  4007fb:	48 89 50 10          	mov    %rdx,0x10(%rax)
+  4007ff:	eb 12                	jmp    400813 <get_q+0x80>
+  400801:	48 8b 05 78 18 20 00 	mov    0x201878(%rip),%rax        # 602080 <head>
+  400808:	48 8b 40 10          	mov    0x10(%rax),%rax
+  40080c:	48 89 05 75 18 20 00 	mov    %rax,0x201875(%rip)        # 602088 <head+0x8>
+  400813:	48 8b 05 66 18 20 00 	mov    0x201866(%rip),%rax        # 602080 <head>
+  40081a:	48 8b 40 10          	mov    0x10(%rax),%rax
+  40081e:	48 8b 15 5b 18 20 00 	mov    0x20185b(%rip),%rdx        # 602080 <head>
+  400825:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+  400829:	48 89 10             	mov    %rdx,(%rax)
+
+      return item;
+  40082c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400830:	eb 05                	jmp    400837 <get_q+0xa4>
+   }
+
+   return NULL;
+  400832:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  400837:	5d                   	pop    %rbp
+  400838:	c3                   	retq   
+
+0000000000400839 <main>:
+
+int main(void) {
+  400839:	55                   	push   %rbp
+  40083a:	48 89 e5             	mov    %rsp,%rbp
+  40083d:	48 83 ec 60          	sub    $0x60,%rsp
+   data_t *data_2;
+   data_t *data_3;
+   data_t *data_4;
+   data_t *data_5;
+
+   TAILQ_INIT(&head); /* Initialize the queue. */
+  400841:	48 c7 05 34 18 20 00 	movq   $0x0,0x201834(%rip)        # 602080 <head>
+  400848:	00 00 00 00 
+  40084c:	48 c7 05 31 18 20 00 	movq   $0x602080,0x201831(%rip)        # 602088 <head+0x8>
+  400853:	80 20 60 00 
+
+   item_1 = malloc(sizeof(entry_t));
+  400857:	bf 18 00 00 00       	mov    $0x18,%edi
+  40085c:	e8 af fc ff ff       	callq  400510 <malloc@plt>
+  400861:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+   item_2 = malloc(sizeof(entry_t));
+  400865:	bf 18 00 00 00       	mov    $0x18,%edi
+  40086a:	e8 a1 fc ff ff       	callq  400510 <malloc@plt>
+  40086f:	48 89 45 b8          	mov    %rax,-0x48(%rbp)
+   item_3 = malloc(sizeof(entry_t));
+  400873:	bf 18 00 00 00       	mov    $0x18,%edi
+  400878:	e8 93 fc ff ff       	callq  400510 <malloc@plt>
+  40087d:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+   item_4 = malloc(sizeof(entry_t));
+  400881:	bf 18 00 00 00       	mov    $0x18,%edi
+  400886:	e8 85 fc ff ff       	callq  400510 <malloc@plt>
+  40088b:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+   item_5 = malloc(sizeof(entry_t));
+  40088f:	bf 18 00 00 00       	mov    $0x18,%edi
+  400894:	e8 77 fc ff ff       	callq  400510 <malloc@plt>
+  400899:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+
+   data_1 = malloc(sizeof(data_t));
+  40089d:	bf 04 00 00 00       	mov    $0x4,%edi
+  4008a2:	e8 69 fc ff ff       	callq  400510 <malloc@plt>
+  4008a7:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+   data_2 = malloc(sizeof(data_t));
+  4008ab:	bf 04 00 00 00       	mov    $0x4,%edi
+  4008b0:	e8 5b fc ff ff       	callq  400510 <malloc@plt>
+  4008b5:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+   data_3 = malloc(sizeof(data_t));
+  4008b9:	bf 04 00 00 00       	mov    $0x4,%edi
+  4008be:	e8 4d fc ff ff       	callq  400510 <malloc@plt>
+  4008c3:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+   data_4 = malloc(sizeof(data_t));
+  4008c7:	bf 04 00 00 00       	mov    $0x4,%edi
+  4008cc:	e8 3f fc ff ff       	callq  400510 <malloc@plt>
+  4008d1:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+   data_5 = malloc(sizeof(data_t));
+  4008d5:	bf 04 00 00 00       	mov    $0x4,%edi
+  4008da:	e8 31 fc ff ff       	callq  400510 <malloc@plt>
+  4008df:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+
+   data_1->value = 1;
+  4008e3:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  4008e7:	c7 00 01 00 00 00    	movl   $0x1,(%rax)
+   data_2->value = 2;
+  4008ed:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  4008f1:	c7 00 02 00 00 00    	movl   $0x2,(%rax)
+   data_3->value = 3;
+  4008f7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  4008fb:	c7 00 03 00 00 00    	movl   $0x3,(%rax)
+   data_4->value = 4;
+  400901:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  400905:	c7 00 04 00 00 00    	movl   $0x4,(%rax)
+   data_5->value = 5;
+  40090b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  40090f:	c7 00 05 00 00 00    	movl   $0x5,(%rax)
+
+   item_1->data = data_1;
+  400915:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+  400919:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+  40091d:	48 89 10             	mov    %rdx,(%rax)
+   item_2->data = data_2;
+  400920:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  400924:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+  400928:	48 89 10             	mov    %rdx,(%rax)
+   item_3->data = data_3;
+  40092b:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  40092f:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+  400933:	48 89 10             	mov    %rdx,(%rax)
+   item_4->data = data_4;
+  400936:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  40093a:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+  40093e:	48 89 10             	mov    %rdx,(%rax)
+   item_5->data = data_5;
+  400941:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  400945:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  400949:	48 89 10             	mov    %rdx,(%rax)
+
+   /* case 1 - insert three times no get */
+   insert_q(item_1);
+  40094c:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+  400950:	48 89 c7             	mov    %rax,%rdi
+  400953:	e8 5e fd ff ff       	callq  4006b6 <insert_q>
+   insert_q(item_2);
+  400958:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  40095c:	48 89 c7             	mov    %rax,%rdi
+  40095f:	e8 52 fd ff ff       	callq  4006b6 <insert_q>
+   insert_q(item_3);
+  400964:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  400968:	48 89 c7             	mov    %rax,%rdi
+  40096b:	e8 46 fd ff ff       	callq  4006b6 <insert_q>
+   printf("Case 1 - insert 3 items into the queue, no get\n");
+  400970:	bf f8 0c 40 00       	mov    $0x400cf8,%edi
+  400975:	e8 56 fb ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result is values 2 and 3\n");
+  40097a:	bf 28 0d 40 00       	mov    $0x400d28,%edi
+  40097f:	e8 4c fb ff ff       	callq  4004d0 <puts@plt>
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400984:	48 8b 05 f5 16 20 00 	mov    0x2016f5(%rip),%rax        # 602080 <head>
+  40098b:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  40098f:	eb 26                	jmp    4009b7 <main+0x17e>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400991:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400995:	48 8b 00             	mov    (%rax),%rax
+  400998:	8b 00                	mov    (%rax),%eax
+  40099a:	89 c6                	mov    %eax,%esi
+  40099c:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  4009a1:	b8 00 00 00 00       	mov    $0x0,%eax
+  4009a6:	e8 35 fb ff ff       	callq  4004e0 <printf@plt>
+   insert_q(item_1);
+   insert_q(item_2);
+   insert_q(item_3);
+   printf("Case 1 - insert 3 items into the queue, no get\n");
+   printf("expected result is values 2 and 3\n");
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  4009ab:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  4009af:	48 8b 40 08          	mov    0x8(%rax),%rax
+  4009b3:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  4009b7:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  4009bc:	75 d3                	jne    400991 <main+0x158>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+
+   /* case 2 - do a get */
+   printf("\nCase 2 - do one get\n");
+  4009be:	bf 55 0d 40 00       	mov    $0x400d55,%edi
+  4009c3:	e8 08 fb ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result is value 2\n");
+  4009c8:	bf 6a 0d 40 00       	mov    $0x400d6a,%edi
+  4009cd:	e8 fe fa ff ff       	callq  4004d0 <puts@plt>
+   np = get_q();
+  4009d2:	e8 bc fd ff ff       	callq  400793 <get_q>
+  4009d7:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+   if (np != NULL)
+  4009db:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  4009e0:	74 1a                	je     4009fc <main+0x1c3>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  4009e2:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  4009e6:	48 8b 00             	mov    (%rax),%rax
+  4009e9:	8b 00                	mov    (%rax),%eax
+  4009eb:	89 c6                	mov    %eax,%esi
+  4009ed:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  4009f2:	b8 00 00 00 00       	mov    $0x0,%eax
+  4009f7:	e8 e4 fa ff ff       	callq  4004e0 <printf@plt>
+   printf("print the rest of the items in the queue\n");
+  4009fc:	bf 88 0d 40 00       	mov    $0x400d88,%edi
+  400a01:	e8 ca fa ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result is value 3\n");
+  400a06:	bf b1 0d 40 00       	mov    $0x400db1,%edi
+  400a0b:	e8 c0 fa ff ff       	callq  4004d0 <puts@plt>
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400a10:	48 8b 05 69 16 20 00 	mov    0x201669(%rip),%rax        # 602080 <head>
+  400a17:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400a1b:	eb 26                	jmp    400a43 <main+0x20a>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400a1d:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400a21:	48 8b 00             	mov    (%rax),%rax
+  400a24:	8b 00                	mov    (%rax),%eax
+  400a26:	89 c6                	mov    %eax,%esi
+  400a28:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  400a2d:	b8 00 00 00 00       	mov    $0x0,%eax
+  400a32:	e8 a9 fa ff ff       	callq  4004e0 <printf@plt>
+   np = get_q();
+   if (np != NULL)
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+   printf("print the rest of the items in the queue\n");
+   printf("expected result is value 3\n");
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400a37:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400a3b:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400a3f:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400a43:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400a48:	75 d3                	jne    400a1d <main+0x1e4>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+
+   /*  case 3 - do two more gets */
+   printf("\nCase 3 - do one get followed by another\n");
+  400a4a:	bf d0 0d 40 00       	mov    $0x400dd0,%edi
+  400a4f:	e8 7c fa ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result for first get is value 3\n");
+  400a54:	bf 00 0e 40 00       	mov    $0x400e00,%edi
+  400a59:	e8 72 fa ff ff       	callq  4004d0 <puts@plt>
+   np = get_q();
+  400a5e:	e8 30 fd ff ff       	callq  400793 <get_q>
+  400a63:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+   if (np != NULL)
+  400a67:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400a6c:	74 1a                	je     400a88 <main+0x24f>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400a6e:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400a72:	48 8b 00             	mov    (%rax),%rax
+  400a75:	8b 00                	mov    (%rax),%eax
+  400a77:	89 c6                	mov    %eax,%esi
+  400a79:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  400a7e:	b8 00 00 00 00       	mov    $0x0,%eax
+  400a83:	e8 58 fa ff ff       	callq  4004e0 <printf@plt>
+   printf("print the rest of the items in the queue\n");
+  400a88:	bf 88 0d 40 00       	mov    $0x400d88,%edi
+  400a8d:	e8 3e fa ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result is that the queue should be empty\n");
+  400a92:	bf 30 0e 40 00       	mov    $0x400e30,%edi
+  400a97:	e8 34 fa ff ff       	callq  4004d0 <puts@plt>
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400a9c:	48 8b 05 dd 15 20 00 	mov    0x2015dd(%rip),%rax        # 602080 <head>
+  400aa3:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400aa7:	eb 26                	jmp    400acf <main+0x296>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400aa9:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400aad:	48 8b 00             	mov    (%rax),%rax
+  400ab0:	8b 00                	mov    (%rax),%eax
+  400ab2:	89 c6                	mov    %eax,%esi
+  400ab4:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  400ab9:	b8 00 00 00 00       	mov    $0x0,%eax
+  400abe:	e8 1d fa ff ff       	callq  4004e0 <printf@plt>
+   np = get_q();
+   if (np != NULL)
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+   printf("print the rest of the items in the queue\n");
+   printf("expected result is that the queue should be empty\n");
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400ac3:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400ac7:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400acb:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400acf:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400ad4:	75 d3                	jne    400aa9 <main+0x270>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+   printf("do another get\n");
+  400ad6:	bf 62 0e 40 00       	mov    $0x400e62,%edi
+  400adb:	e8 f0 f9 ff ff       	callq  4004d0 <puts@plt>
+   printf("expected result is NULL\n");
+  400ae0:	bf 71 0e 40 00       	mov    $0x400e71,%edi
+  400ae5:	e8 e6 f9 ff ff       	callq  4004d0 <puts@plt>
+   np = get_q();
+  400aea:	e8 a4 fc ff ff       	callq  400793 <get_q>
+  400aef:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+   if (np == NULL)
+  400af3:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400af8:	75 0a                	jne    400b04 <main+0x2cb>
+      printf("value(NULL)\n");
+  400afa:	bf 89 0e 40 00       	mov    $0x400e89,%edi
+  400aff:	e8 cc f9 ff ff       	callq  4004d0 <puts@plt>
+
+   /* case 4 -insert one more element into the queue, no get */
+   printf("\nCase 4 - do one insert\n");
+  400b04:	bf 95 0e 40 00       	mov    $0x400e95,%edi
+  400b09:	e8 c2 f9 ff ff       	callq  4004d0 <puts@plt>
+   printf("print the rest of the items in the queue\n");
+  400b0e:	bf 88 0d 40 00       	mov    $0x400d88,%edi
+  400b13:	e8 b8 f9 ff ff       	callq  4004d0 <puts@plt>
+   insert_q(item_4);
+  400b18:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  400b1c:	48 89 c7             	mov    %rax,%rdi
+  400b1f:	e8 92 fb ff ff       	callq  4006b6 <insert_q>
+   printf("expected result for first get is value 4\n");
+  400b24:	bf b0 0e 40 00       	mov    $0x400eb0,%edi
+  400b29:	e8 a2 f9 ff ff       	callq  4004d0 <puts@plt>
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400b2e:	48 8b 05 4b 15 20 00 	mov    0x20154b(%rip),%rax        # 602080 <head>
+  400b35:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400b39:	eb 26                	jmp    400b61 <main+0x328>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400b3b:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400b3f:	48 8b 00             	mov    (%rax),%rax
+  400b42:	8b 00                	mov    (%rax),%eax
+  400b44:	89 c6                	mov    %eax,%esi
+  400b46:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  400b4b:	b8 00 00 00 00       	mov    $0x0,%eax
+  400b50:	e8 8b f9 ff ff       	callq  4004e0 <printf@plt>
+   /* case 4 -insert one more element into the queue, no get */
+   printf("\nCase 4 - do one insert\n");
+   printf("print the rest of the items in the queue\n");
+   insert_q(item_4);
+   printf("expected result for first get is value 4\n");
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400b55:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400b59:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400b5d:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400b61:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400b66:	75 d3                	jne    400b3b <main+0x302>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+
+   /* case 5 -insert one more element into the queue, no get */
+   printf("\nCase 5 - do one insert\n");
+  400b68:	bf d9 0e 40 00       	mov    $0x400ed9,%edi
+  400b6d:	e8 5e f9 ff ff       	callq  4004d0 <puts@plt>
+   printf("print the rest of the items in the queue\n");
+  400b72:	bf 88 0d 40 00       	mov    $0x400d88,%edi
+  400b77:	e8 54 f9 ff ff       	callq  4004d0 <puts@plt>
+   insert_q(item_5);
+  400b7c:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  400b80:	48 89 c7             	mov    %rax,%rdi
+  400b83:	e8 2e fb ff ff       	callq  4006b6 <insert_q>
+   printf("expected result for first get is value 4 and 5\n");
+  400b88:	bf f8 0e 40 00       	mov    $0x400ef8,%edi
+  400b8d:	e8 3e f9 ff ff       	callq  4004d0 <puts@plt>
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400b92:	48 8b 05 e7 14 20 00 	mov    0x2014e7(%rip),%rax        # 602080 <head>
+  400b99:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400b9d:	eb 26                	jmp    400bc5 <main+0x38c>
+      printf("value(%d)\n", ((data_t *)np->data)->value);
+  400b9f:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400ba3:	48 8b 00             	mov    (%rax),%rax
+  400ba6:	8b 00                	mov    (%rax),%eax
+  400ba8:	89 c6                	mov    %eax,%esi
+  400baa:	bf 4a 0d 40 00       	mov    $0x400d4a,%edi
+  400baf:	b8 00 00 00 00       	mov    $0x0,%eax
+  400bb4:	e8 27 f9 ff ff       	callq  4004e0 <printf@plt>
+   /* case 5 -insert one more element into the queue, no get */
+   printf("\nCase 5 - do one insert\n");
+   printf("print the rest of the items in the queue\n");
+   insert_q(item_5);
+   printf("expected result for first get is value 4 and 5\n");
+   for (np = TAILQ_FIRST(&head); np != NULL; np = TAILQ_NEXT(np, entries))
+  400bb9:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  400bbd:	48 8b 40 08          	mov    0x8(%rax),%rax
+  400bc1:	48 89 45 a8          	mov    %rax,-0x58(%rbp)
+  400bc5:	48 83 7d a8 00       	cmpq   $0x0,-0x58(%rbp)
+  400bca:	75 d3                	jne    400b9f <main+0x366>
+#if 0
+   /* Delete. */
+   while (TAILQ_FIRST(&head) != NULL)
+      TAILQ_REMOVE(&head, TAILQ_FIRST(&head), entries);
+#endif
+   clear_queue();
+  400bcc:	e8 45 fa ff ff       	callq  400616 <clear_queue>
+
+   free(item_1);
+  400bd1:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+  400bd5:	48 89 c7             	mov    %rax,%rdi
+  400bd8:	e8 e3 f8 ff ff       	callq  4004c0 <free@plt>
+   free(item_2);
+  400bdd:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  400be1:	48 89 c7             	mov    %rax,%rdi
+  400be4:	e8 d7 f8 ff ff       	callq  4004c0 <free@plt>
+   free(item_3);
+  400be9:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  400bed:	48 89 c7             	mov    %rax,%rdi
+  400bf0:	e8 cb f8 ff ff       	callq  4004c0 <free@plt>
+   free(item_4);
+  400bf5:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  400bf9:	48 89 c7             	mov    %rax,%rdi
+  400bfc:	e8 bf f8 ff ff       	callq  4004c0 <free@plt>
+   free(item_5);
+  400c01:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  400c05:	48 89 c7             	mov    %rax,%rdi
+  400c08:	e8 b3 f8 ff ff       	callq  4004c0 <free@plt>
+
+   free(data_1);
+  400c0d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  400c11:	48 89 c7             	mov    %rax,%rdi
+  400c14:	e8 a7 f8 ff ff       	callq  4004c0 <free@plt>
+   free(data_2);
+  400c19:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  400c1d:	48 89 c7             	mov    %rax,%rdi
+  400c20:	e8 9b f8 ff ff       	callq  4004c0 <free@plt>
+   free(data_3);
+  400c25:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  400c29:	48 89 c7             	mov    %rax,%rdi
+  400c2c:	e8 8f f8 ff ff       	callq  4004c0 <free@plt>
+   free(data_4);
+  400c31:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  400c35:	48 89 c7             	mov    %rax,%rdi
+  400c38:	e8 83 f8 ff ff       	callq  4004c0 <free@plt>
+   free(data_5);
+  400c3d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  400c41:	48 89 c7             	mov    %rax,%rdi
+  400c44:	e8 77 f8 ff ff       	callq  4004c0 <free@plt>
+
+   return 0;
+  400c49:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  400c4e:	c9                   	leaveq 
+  400c4f:	c3                   	retq   
+
+0000000000400c50 <__libc_csu_init>:
+  400c50:	41 57                	push   %r15
+  400c52:	41 56                	push   %r14
+  400c54:	41 89 ff             	mov    %edi,%r15d
+  400c57:	41 55                	push   %r13
+  400c59:	41 54                	push   %r12
+  400c5b:	4c 8d 25 ae 11 20 00 	lea    0x2011ae(%rip),%r12        # 601e10 <__frame_dummy_init_array_entry>
+  400c62:	55                   	push   %rbp
+  400c63:	48 8d 2d ae 11 20 00 	lea    0x2011ae(%rip),%rbp        # 601e18 <__init_array_end>
+  400c6a:	53                   	push   %rbx
+  400c6b:	49 89 f6             	mov    %rsi,%r14
+  400c6e:	49 89 d5             	mov    %rdx,%r13
+  400c71:	31 db                	xor    %ebx,%ebx
+  400c73:	4c 29 e5             	sub    %r12,%rbp
+  400c76:	48 83 ec 08          	sub    $0x8,%rsp
+  400c7a:	48 c1 fd 03          	sar    $0x3,%rbp
+  400c7e:	e8 05 f8 ff ff       	callq  400488 <_init>
+  400c83:	48 85 ed             	test   %rbp,%rbp
+  400c86:	74 1e                	je     400ca6 <__libc_csu_init+0x56>
+  400c88:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  400c8f:	00 
+  400c90:	4c 89 ea             	mov    %r13,%rdx
+  400c93:	4c 89 f6             	mov    %r14,%rsi
+  400c96:	44 89 ff             	mov    %r15d,%edi
+  400c99:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+  400c9d:	48 83 c3 01          	add    $0x1,%rbx
+  400ca1:	48 39 eb             	cmp    %rbp,%rbx
+  400ca4:	75 ea                	jne    400c90 <__libc_csu_init+0x40>
+  400ca6:	48 83 c4 08          	add    $0x8,%rsp
+  400caa:	5b                   	pop    %rbx
+  400cab:	5d                   	pop    %rbp
+  400cac:	41 5c                	pop    %r12
+  400cae:	41 5d                	pop    %r13
+  400cb0:	41 5e                	pop    %r14
+  400cb2:	41 5f                	pop    %r15
+  400cb4:	c3                   	retq   
+  400cb5:	90                   	nop
+  400cb6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  400cbd:	00 00 00 
+
+0000000000400cc0 <__libc_csu_fini>:
+  400cc0:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+0000000000400cc4 <_fini>:
+  400cc4:	48 83 ec 08          	sub    $0x8,%rsp
+  400cc8:	48 83 c4 08          	add    $0x8,%rsp
+  400ccc:	c3                   	retq   
